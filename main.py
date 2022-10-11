@@ -26,7 +26,7 @@ sd.wait()
 # file with the given sampling frequency
 #write("recording0.wav", freq, recording)
 
-print("The recording has stopped \n We will now say what you said back to you")
+print("The recording has stopped \nWe will now say what you said back to you")
 
 # Convert the NumPy array to audio file
 wv.write("inputAudio.wav", recording, freq, sampwidth=2)
@@ -56,8 +56,8 @@ else:
     print("you said something else")
 
 tts = gtts.gTTS(tekst, lang="en")
-tts.save("outoutAudio.mp3")
-playsound("outoutAudio.mp3")
+tts.save("outputAudio.mp3")
+playsound("outputAudio.mp3")
 
 if os.path.exists("inputAudio.wav"):
   os.remove("inputAudio.wav")
@@ -65,9 +65,9 @@ if os.path.exists("inputAudio.wav"):
 else:
   print("The inputAudio.wav does not exist")
 
-if os.path.exists("outoutAudio.mp3"):
-  os.remove("outoutAudio.mp3")
+if os.path.exists("outputAudio.mp3"):
+  os.remove("outputAudio.mp3")
   print("output audio deleted")
 else:
-  print("The outoutAudio.mp3 does not exist")
+  print("The outputAudio.mp3 does not exist")
 
