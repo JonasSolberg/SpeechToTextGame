@@ -28,36 +28,41 @@ sd.wait()
 
 print("The recording has stopped \nWe will now say what you said back to you")
 
-# Convert the NumPy array to audio file
-wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+try:
+    # Convert the NumPy array to audio file
+    wv.write("inputAudio.wav", recording, freq, sampwidth=2)
 
 
 
-import speech_recognition as sr
-sr.__version__
+    import speech_recognition as sr
+    sr.__version__
 
-r = sr.Recognizer()
+    r = sr.Recognizer()
 
-inputaudio = sr.AudioFile('inputAudio.wav')
-with inputaudio as source:
-   audio = r.record(source)
+    inputaudio = sr.AudioFile('inputAudio.wav')
+    with inputaudio as source:
+        audio = r.record(source)
+    type(audio)
+    tekst = r.recognize_google(audio)
+    print(tekst)
 
+except:
+    print("error with voice to text. Try again. Check if the voice is clear and you have internet connection")
 
-type(audio)
+try:
+    if tekst == "yes":
+        print("you said yes")
+    else:
+        print("you said something else")
+except:
+        print("error with if statement")
 
-tekst = r.recognize_google(audio)
-
-print(tekst)
-
-
-if tekst == "yes":
-    print("you said yes")
-else:
-    print("you said something else")
-
-tts = gtts.gTTS(tekst, lang="en")
-tts.save("outputAudio.mp3")
-playsound("outputAudio.mp3")
+try:
+    tts = gtts.gTTS(tekst, lang="en")
+    tts.save("outputAudio.mp3")
+    playsound("outputAudio.mp3")
+except:
+    print("Error with output of audio")
 
 if os.path.exists("inputAudio.wav"):
   os.remove("inputAudio.wav")
