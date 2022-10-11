@@ -5,8 +5,10 @@ import wavio as wv
 import gtts
 from playsound import playsound
 
+#https://www.thepythoncode.com/article/convert-text-to-speech-in-python
+#https://www.geeksforgeeks.org/create-a-voice-recorder-using-python/
 
-
+print("Start opptak")
 # Sampling frequency
 freq = 44100
 
@@ -25,10 +27,10 @@ sd.wait()
 # file with the given sampling frequency
 #write("recording0.wav", freq, recording)
 
-
+print("stop reqording")
 
 # Convert the NumPy array to audio file
-wv.write("harvard.wav", recording, freq, sampwidth=2)
+wv.write("inputAudio.wav", recording, freq, sampwidth=2)
 
 
 
@@ -37,7 +39,7 @@ sr.__version__
 
 r = sr.Recognizer()
 
-harvard = sr.AudioFile('harvard.wav')
+harvard = sr.AudioFile('inputAudio.wav')
 with harvard as source:
    audio = r.record(source)
 
@@ -54,5 +56,5 @@ else:
     print("noe annet")
 
 tts = gtts.gTTS(tekst, lang="en")
-tts.save("hola.mp3")
-playsound("hola.mp3")
+tts.save("outoutAudio.mp3")
+playsound("outoutAudio.mp3")
