@@ -10,7 +10,7 @@ pip install SpeechRecognition
 
 
 
-#sources
-#https://www.thepythoncode.com/article/convert-text-to-speech-in-python
-#https://www.geeksforgeeks.org/create-a-voice-recorder-using-python/
-#https://realpython.com/python-speech-recognition/
+sources
+https://www.thepythoncode.com/article/convert-text-to-speech-in-python
+https://www.geeksforgeeks.org/create-a-voice-recorder-using-python/
+https://realpython.com/python-speech-recognition/
