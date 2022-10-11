@@ -4,11 +4,12 @@ from scipy.io.wavfile import write
 import wavio as wv
 import gtts
 from playsound import playsound
+import os
 
 #https://www.thepythoncode.com/article/convert-text-to-speech-in-python
 #https://www.geeksforgeeks.org/create-a-voice-recorder-using-python/
 
-print("Start opptak")
+print("A five second recording has started")
 # Sampling frequency
 freq = 44100
 
@@ -27,7 +28,7 @@ sd.wait()
 # file with the given sampling frequency
 #write("recording0.wav", freq, recording)
 
-print("stop reqording")
+print("The recording has stopped \n We will now say what you said back to you")
 
 # Convert the NumPy array to audio file
 wv.write("inputAudio.wav", recording, freq, sampwidth=2)
@@ -39,9 +40,10 @@ sr.__version__
 
 r = sr.Recognizer()
 
-harvard = sr.AudioFile('inputAudio.wav')
-with harvard as source:
+inputaudio = sr.AudioFile('inputAudio.wav')
+with inputaudio as source:
    audio = r.record(source)
+
 
 type(audio)
 
@@ -51,10 +53,23 @@ print(tekst)
 
 
 if tekst == "yes":
-    print("Confirm")
+    print("you said yes")
 else:
-    print("noe annet")
+    print("you said something else")
 
 tts = gtts.gTTS(tekst, lang="en")
 tts.save("outoutAudio.mp3")
 playsound("outoutAudio.mp3")
+
+if os.path.exists("inputAudio.wav"):
+  os.remove("inputAudio.wav")
+  print("input Audio deleted")
+else:
+  print("The inputAudio.wav does not exist")
+
+if os.path.exists("outoutAudio.mp3"):
+  os.remove("outoutAudio.mp3")
+  print("output audio deleted")
+else:
+  print("The outoutAudio.mp3 does not exist")
+
