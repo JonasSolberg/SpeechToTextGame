@@ -6,7 +6,7 @@ pip3 install gTTS pyttsx3 playsound
 pip3 install sounddevice
 pip3 install wavio
 pip3 install scipy
-pip install SpeechRecognition
+pip3 install SpeechRecognition
 
 
 

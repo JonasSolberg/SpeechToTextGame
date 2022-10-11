@@ -6,7 +6,7 @@ import gtts
 from playsound import playsound
 import os
 
-
+#fuck off
 print("A five second recording has started")
 # Sampling frequency
 freq = 44100
