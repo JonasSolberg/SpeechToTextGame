@@ -6,8 +6,6 @@ import gtts
 from playsound import playsound
 import os
 
-#https://www.thepythoncode.com/article/convert-text-to-speech-in-python
-#https://www.geeksforgeeks.org/create-a-voice-recorder-using-python/
 
 print("A five second recording has started")
 # Sampling frequency

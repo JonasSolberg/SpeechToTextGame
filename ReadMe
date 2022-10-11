@@ -1,0 +1,16 @@
+Installation for dependencies
+
+run in terminal
+
+pip3 install gTTS pyttsx3 playsound
+pip3 install sounddevice
+pip3 install wavio
+pip3 install scipy
+pip install SpeechRecognition
+
+
+
+#sources
+#https://www.thepythoncode.com/article/convert-text-to-speech-in-python
+#https://www.geeksforgeeks.org/create-a-voice-recorder-using-python/
+#https://realpython.com/python-speech-recognition/
