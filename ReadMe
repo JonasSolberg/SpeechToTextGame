@@ -1,5 +1,7 @@
 Installation for dependencies
 
+First make sure you have pip https://monsterhost.com/what-is-pip-and-how-to-install-pip3/ 
+
 run in terminal
 
 pip3 install gTTS pyttsx3 playsound
