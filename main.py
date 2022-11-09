@@ -6,6 +6,7 @@ import gtts
 from playsound import playsound
 import os
 
+#test1
 #fuck off
 print("A five second recording has started")
 # Sampling frequency
@@ -32,6 +33,7 @@ try:
     # Convert the NumPy array to audio file
     wv.write("inputAudio.wav", recording, freq, sampwidth=2)
 
+#test push
 
 
     import speech_recognition as sr
