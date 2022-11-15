@@ -43,5 +43,5 @@ if answer == "yes" or answer == "ready":
     choice1input = input()
 
 else:
-    "Okei"
+    "Okei, the game quits now"
     quit()
