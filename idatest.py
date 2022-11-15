@@ -4,7 +4,8 @@ import wavio as wv
 import gtts
 from playsound import playsound
 import os
-
+import speech_recognition as sr
+sr.__version__
 from modul_TTS import speak
 
 introText1 = "Welcome to our game!"
@@ -22,9 +23,42 @@ speak(introText1)
 # speak(introText3)
 # speak(introText4)
 speak(introText5)
-name = input()
+# Sampling frequency
+freq = 44100
+
+# Recording duration
+duration = 2
+
+# Start recorder with the given values
+# of duration and sample frequency
+recording = sd.rec(int(duration * freq),
+				samplerate=freq, channels=1)
+
+# Record audio for the given number of seconds
+sd.wait()
+
+# This will convert the NumPy array to an audio
+# file with the given sampling frequency
+#write("recording0.wav", freq, recording)
+
+print("The recording has stopped")
+
+#konverter stemme til tekst
+
+# Convert the NumPy array to audio file
+wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+r = sr.Recognizer()
+inputaudio = sr.AudioFile('inputAudio.wav')
+with inputaudio as source:
+     audio = r.record(source)
+type(audio)
+name = r.recognize_google(audio)
+#print(name)
+
+#name = input(name)
 
 introText6 = "Hi, " + name + "! Are you ready to play?"
+
 print(introText6)
 speak(introText6)
 answer = input()
