@@ -29,19 +29,19 @@ print(introText6)
 speak(introText6)
 answer = input()
 
-if answer == "yes":
+#Ready to play: User says no
+if answer == "no":
+    noText = "Okei, say ready whenever you are ready."
+    speak(noText)
+    answer = input()
+
+#Ready to play: User says yes or is now ready
+if answer == "yes" or answer == "ready":
     choice = ["accept", "refuse"]
     choice1text = "Great! Lets start!"
     speak(choice1text)
     choice1input = input()
 
-if answer == "no":
-    noText = "Okei, say ready whenever you are ready."
-    speak(noText)
-    choice1input = input()
-
-if choice1input == 'accept' or choice1input == 'ready':
-    print("hey")
 else:
     "Okei"
     quit()
