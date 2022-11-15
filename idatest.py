@@ -23,16 +23,20 @@ speak(introText1)
 # speak(introText3)
 # speak(introText4)
 speak(introText5)
-# Sampling frequency
+
+#CODE FOR RECORDING TO STRING
+
+#Sampling frequency
 freq = 44100
 
 # Recording duration
-duration = 2
+duration = 3
 
 # Start recorder with the given values
 # of duration and sample frequency
 recording = sd.rec(int(duration * freq),
 				samplerate=freq, channels=1)
+print("Recording has started")
 
 # Record audio for the given number of seconds
 sd.wait()
@@ -50,7 +54,8 @@ wv.write("inputAudio.wav", recording, freq, sampwidth=2)
 r = sr.Recognizer()
 inputaudio = sr.AudioFile('inputAudio.wav')
 with inputaudio as source:
-     audio = r.record(source)
+    audio = r.record(source)
+
 type(audio)
 name = r.recognize_google(audio)
 #print(name)
@@ -61,13 +66,44 @@ introText6 = "Hi, " + name + "! Are you ready to play?"
 
 print(introText6)
 speak(introText6)
-answer = input()
+
+freq = 44100
+duration = 3
+recording = sd.rec(int(duration * freq),
+                    samplerate=freq, channels=1)
+print("Recording has started")
+sd.wait()
+print("The recording has stopped")
+wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+r = sr.Recognizer()
+inputaudio = sr.AudioFile('inputAudio.wav')
+with inputaudio as source:
+    audio = r.record(source)
+type(audio)
+answer = r.recognize_google(audio)
 
 #Ready to play: User says no
 if answer == "no":
     noText = "Okei, say ready whenever you are ready."
     speak(noText)
-    answer = input()
+
+    #RECORDING FOR READY IF ANSWER WAS NO
+    freq = 44100
+    duration = 3
+    recording = sd.rec(int(duration * freq),
+                       samplerate=freq, channels=1)
+    print("Recording has started")
+    sd.wait()
+    print("The recording has stopped")
+    wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+    r = sr.Recognizer()
+    inputaudio = sr.AudioFile('inputAudio.wav')
+    with inputaudio as source:
+        audio = r.record(source)
+    type(audio)
+    answer = r.recognize_google(audio)
+
+    print(answer)
 
 #Ready to play: User says yes or is now ready
 if answer == "yes" or answer == "ready":
