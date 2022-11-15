@@ -1,4 +1,5 @@
 import sounddevice as sd
+import speech_recognition
 from scipy.io.wavfile import write
 import wavio as wv
 import gtts
@@ -25,39 +26,25 @@ speak(introText1)
 speak(introText5)
 
 #CODE FOR RECORDING TO STRING
-
-#Sampling frequency
 freq = 44100
-
-# Recording duration
 duration = 3
-
-# Start recorder with the given values
-# of duration and sample frequency
 recording = sd.rec(int(duration * freq),
-				samplerate=freq, channels=1)
+                           samplerate=freq, channels=1)
 print("Recording has started")
-
-# Record audio for the given number of seconds
 sd.wait()
-
-# This will convert the NumPy array to an audio
-# file with the given sampling frequency
-#write("recording0.wav", freq, recording)
-
 print("The recording has stopped")
-
-#konverter stemme til tekst
-
-# Convert the NumPy array to audio file
 wv.write("inputAudio.wav", recording, freq, sampwidth=2)
 r = sr.Recognizer()
 inputaudio = sr.AudioFile('inputAudio.wav')
 with inputaudio as source:
-    audio = r.record(source)
-
+            audio = r.record(source)
 type(audio)
-name = r.recognize_google(audio)
+text = r.recognize_google(audio)
+
+name = text
+
+
+
 #print(name)
 
 #name = input(name)
@@ -70,7 +57,7 @@ speak(introText6)
 freq = 44100
 duration = 3
 recording = sd.rec(int(duration * freq),
-                    samplerate=freq, channels=1)
+                           samplerate=freq, channels=1)
 print("Recording has started")
 sd.wait()
 print("The recording has stopped")
@@ -78,9 +65,12 @@ wv.write("inputAudio.wav", recording, freq, sampwidth=2)
 r = sr.Recognizer()
 inputaudio = sr.AudioFile('inputAudio.wav')
 with inputaudio as source:
-    audio = r.record(source)
+            audio = r.record(source)
 type(audio)
-answer = r.recognize_google(audio)
+text = r.recognize_google(audio)
+
+answer = text
+print(answer)
 
 #Ready to play: User says no
 if answer == "no":
@@ -101,8 +91,9 @@ if answer == "no":
     with inputaudio as source:
         audio = r.record(source)
     type(audio)
-    answer = r.recognize_google(audio)
+    text = r.recognize_google(audio)
 
+    answer = text
     print(answer)
 
 #Ready to play: User says yes or is now ready
@@ -110,8 +101,8 @@ if answer == "yes" or answer == "ready":
     choice = ["accept", "refuse"]
     choice1text = "Great! Lets start!"
     speak(choice1text)
-    choice1input = input()
+
 
 else:
-    "Okei, the game quits now"
+    speak("Okei, the game quits now")
     quit()
