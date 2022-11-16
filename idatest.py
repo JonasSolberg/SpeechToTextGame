@@ -97,7 +97,7 @@ inputaudio = sr.AudioFile('inputAudio.wav')
 with inputaudio as source:
             audio = r.record(source)
 type(audio)
-text = r.recognize_google(audio, language='en-IN', show_all=True)
+text = r.recognize_google(audio, language='en-IN', show_all=False)
 
 #TURNS TEXT TO ANSWER
 answer = text
@@ -182,11 +182,179 @@ while True:
         print(answer)
 
     #READY TO PLAY: User says yes or is now ready
-    if answer == "yes" or answer == "ready":
+    if answer == "yes" or answer == "Yes" or answer == "ready":
         choice1text = "Great! Lets start!"
         print(choice1text)
         speak(choice1text)
         break
 
 #CHOICE 1: SELL COW OR GO TO MARKED------------------------------------------------------------------------------------------------
-ida=1
+while True:
+    #CHOICE 1: Story
+    choice1Text1 = "Jack is told to take the cow to the marked and sell it."
+    choice1Text2 = "On the way there Jack meets the butcher. He wants the cow."
+    choice1Text3 = "He offerst magic beans. Will you accept his offer?"
+    choice1Text4 = "Say Yes or No"
+    print(choice1Text1)
+    print(choice1Text2)
+    print(choice1Text3)
+    print(choice1Text4)
+    speak(choice1Text1)
+    speak(choice1Text2)
+    speak(choice1Text3)
+    speak(choice1Text4)
+
+    #RECORD THE ANSWER
+    freq = 44100
+    duration = 3
+    recording = sd.rec(int(duration * freq),
+                       samplerate=freq, channels=1)
+    print("Recording has started")
+    sd.wait()
+    print("The recording has stopped")
+    wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+    r = sr.Recognizer()
+    inputaudio = sr.AudioFile('inputAudio.wav')
+    with inputaudio as source:
+        audio = r.record(source)
+    type(audio)
+    text = r.recognize_google(audio, language='en-IN', show_all=False)
+    decision = text
+
+    # CHOICE 1: Yes
+    if decision == "yes":
+        decisionYesText = "Jack accepts the offer he got for the cow and decides to sell it"
+        print(decisionYesText)
+        speak(decisionYesText)
+        break
+
+    # CHOICE 1: No
+    elif decision == "no":
+        decisionNoText = "Jack does not accept the offer so he goes to the market"
+        print(decisionNoText)
+        speak(decisionNoText)
+
+        decisionNoText2 = "He gets a new offer for the cow, again with beans, does he accept?"
+
+        # RECORD THE ANSWER
+        freq = 44100
+        duration = 3
+        recording = sd.rec(int(duration * freq),
+                           samplerate=freq, channels=1)
+        print("Recording has started")
+        sd.wait()
+        print("The recording has stopped")
+        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        r = sr.Recognizer()
+        inputaudio = sr.AudioFile('inputAudio.wav')
+        with inputaudio as source:
+            audio = r.record(source)
+        type(audio)
+        text = r.recognize_google(audio, language='en-IN', show_all=False)
+        decision2 = text
+
+        #CHOICE 1.5: AT THE MARKED ------------------------------------------------------------------------------------------------
+        if decision2 == "yes" or decision2 == "Yes":
+            decision2Text = "Jack accepts the offer he got for the cow and decides to sell it"
+            print(decision2Text)
+            speak(decision2Text)
+            #Add more to line up with the rest of the story
+            break
+
+        if decision2 == "no" or decision2 == "No":
+            decision2Text2 = "Jack returns home with the cow"
+            print(decision2Text2)
+            speak(decision2Text2)
+            # Add more to line up with the rest of the story
+            break
+
+        if not decision2 == "yes" or decision2 == "no":
+            invalidDecision = "Your decision was not one of the requested ones, say your decision again"
+            speak(invalidDecision)
+            print(invalidDecision)
+
+            # NEW RECORDING
+            freq = 44100
+            duration = 3
+            recording = sd.rec(int(duration * freq),
+                               samplerate=freq, channels=1)
+            print("Recording has started")
+            sd.wait()
+            print("The recording has stopped")
+            wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+            r = sr.Recognizer()
+            inputaudio = sr.AudioFile('inputAudio.wav')
+            with inputaudio as source:
+                audio = r.record(source)
+            type(audio)
+            text = r.recognize_google(audio, language='en-IN', show_all=False)
+            decision2 = text
+
+        if decision2 == []:
+            emptyText = "You either didnt say anything or you didn't talk loud enough. Could you repeat your answer"
+            print(emptyText)
+            speak(emptyText)
+
+            freq = 44100
+            duration = 3
+            recording = sd.rec(int(duration * freq),
+                               samplerate=freq, channels=1)
+            print("Recording has started")
+            sd.wait()
+            print("The recording has stopped")
+            wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+            r = sr.Recognizer()
+            inputaudio = sr.AudioFile('inputAudio.wav')
+            with inputaudio as source:
+                audio = r.record(source)
+            type(audio)
+            text = r.recognize_google(audio, language='en-IN', show_all=False)
+            decision2 = r.recognize_google(audio)
+
+
+    # CHOICE 1: Did not say a valid answer
+    if not decision == "yes" or decision == "no":
+        invalidDecision = "Your decision was not one of the requested ones, say your decision again"
+        speak(invalidDecision)
+        print(invalidDecision)
+
+        #NEW RECORDING
+        freq = 44100
+        duration = 3
+        recording = sd.rec(int(duration * freq),
+                           samplerate=freq, channels=1)
+        print("Recording has started")
+        sd.wait()
+        print("The recording has stopped")
+        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        r = sr.Recognizer()
+        inputaudio = sr.AudioFile('inputAudio.wav')
+        with inputaudio as source:
+            audio = r.record(source)
+        type(audio)
+        text = r.recognize_google(audio, language='en-IN', show_all=False)
+        decision = text
+
+    #CHOICE 1: Did not say anything
+    if decision == []:
+        emptyText = "You either didnt say anything or you didn't talk loud enough. Could you repeat your answer"
+        print(emptyText)
+        speak(emptyText)
+
+        freq = 44100
+        duration = 3
+        recording = sd.rec(int(duration * freq),
+                           samplerate=freq, channels=1)
+        print("Recording has started")
+        sd.wait()
+        print("The recording has stopped")
+        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        r = sr.Recognizer()
+        inputaudio = sr.AudioFile('inputAudio.wav')
+        with inputaudio as source:
+            audio = r.record(source)
+        type(audio)
+        text = r.recognize_google(audio, language='en-IN', show_all=False)
+        decision = text
+
+#CHOICE 2: WHAT TO DO WITH THE BEANS ------------------------------------------------------------------------------------------------
