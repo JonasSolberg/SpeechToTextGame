@@ -8,11 +8,11 @@ import speech_recognition as sr
 sr.__version__
 from modul_TTS import speak
 
-def rec():
+def rec(t):
     freq = 44100
     duration = 3
     recording = sd.rec(int(duration * freq),
-                           samplerate=freq, channels=1)
+                               samplerate=freq, channels=1)
     print("Recording has started")
     sd.wait()
     print("The recording has stopped")
@@ -20,6 +20,12 @@ def rec():
     r = sr.Recognizer()
     inputaudio = sr.AudioFile('inputAudio.wav')
     with inputaudio as source:
-            audio = r.record(source)
+                audio = r.record(source)
     type(audio)
     text = r.recognize_google(audio)
+    return text(t)
+
+name = rec.text(t)
+
+print(f'A function without return statement returns {name}')
+

@@ -1,3 +1,6 @@
+#ALL IMPORTS
+import sys
+
 import sounddevice as sd
 import speech_recognition
 from scipy.io.wavfile import write
@@ -9,6 +12,7 @@ import speech_recognition as sr
 sr.__version__
 from modul_TTS import speak
 
+#INTRO PART ONE
 introText1 = "Welcome to our game!"
 introText2 = "In this game you will be playing as Jack, a poor farmers boy living with his mother."
 introText3 = "As you play as Jack, you will encounter challenges that you have to take smart choices"
@@ -25,7 +29,8 @@ speak(introText1)
 # speak(introText4)
 speak(introText5)
 
-#CODE FOR RECORDING TO STRING
+
+#CODE FOR RECORDING TO STRING NAME
 freq = 44100
 duration = 3
 recording = sd.rec(int(duration * freq),
@@ -39,20 +44,42 @@ inputaudio = sr.AudioFile('inputAudio.wav')
 with inputaudio as source:
             audio = r.record(source)
 type(audio)
-text = r.recognize_google(audio)
-
+text = r.recognize_google(audio, language='en-IN', show_all=True)
 name = text
 
+#IF USER DOES NOT SAY ANYTHING
+while True:
+    if name == []:
+            repeatName = "You either didnt say anything or you didn't talk loud enough. Could you please repeat your name"
+            print(repeatName)
+            speak(repeatName)
 
+            freq = 44100
+            duration = 3
+            recording = sd.rec(int(duration * freq),
+                               samplerate=freq, channels=1)
+            print("Recording has started")
+            sd.wait()
+            print("The recording has stopped")
+            wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+            r = sr.Recognizer()
+            inputaudio = sr.AudioFile('inputAudio.wav')
+            with inputaudio as source:
+                audio = r.record(source)
+            type(audio)
+            text = r.recognize_google(audio, language='en-IN', show_all=False)
 
-#print(name)
+            name = text
 
-#name = input(name)
+    # INTRO CONTINUE
+    if not name == []:
+        text = r.recognize_google(audio, language='en-IN', show_all=False)
+        name = text
 
-introText6 = "Hi, " + name + "! Are you ready to play?"
-
-print(introText6)
-speak(introText6)
+        introText6 = "Hi, " + name + "! Are you ready to play?"
+        print(introText6)
+        speak(introText6)
+        break
 
 freq = 44100
 duration = 3
@@ -67,42 +94,92 @@ inputaudio = sr.AudioFile('inputAudio.wav')
 with inputaudio as source:
             audio = r.record(source)
 type(audio)
-text = r.recognize_google(audio)
+text = r.recognize_google(audio, language='en-IN', show_all=True)
 
+#TURNS TEXT TO ANSWER STRING
 answer = text
 print(answer)
 
-#Ready to play: User says no
-if answer == "no":
-    noText = "Okei, say ready whenever you are ready."
-    speak(noText)
+#ARE USER READY TO PLAY
+while True:
+    # READY TO PLAY: User says no
+    #Maybe add if user wants to quit
+    if answer == "no" or answer == "No":
+        noText = "Okei, say ready whenever you are ready."
+        speak(noText)
 
-    #RECORDING FOR READY IF ANSWER WAS NO
-    freq = 44100
-    duration = 3
-    recording = sd.rec(int(duration * freq),
-                       samplerate=freq, channels=1)
-    print("Recording has started")
-    sd.wait()
-    print("The recording has stopped")
-    wv.write("inputAudio.wav", recording, freq, sampwidth=2)
-    r = sr.Recognizer()
-    inputaudio = sr.AudioFile('inputAudio.wav')
-    with inputaudio as source:
-        audio = r.record(source)
-    type(audio)
-    text = r.recognize_google(audio)
+        #RECORDING FOR READY IF ANSWER WAS NO
+        freq = 44100
+        duration = 3
+        recording = sd.rec(int(duration * freq),
+                               samplerate=freq, channels=1)
+        print("Recording has started")
+        sd.wait()
+        print("The recording has stopped")
+        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        r = sr.Recognizer()
+        inputaudio = sr.AudioFile('inputAudio.wav')
+        with inputaudio as source:
+                audio = r.record(source)
+        type(audio)
+        text = r.recognize_google(audio)
 
-    answer = text
-    print(answer)
+        answer = text
+        print(answer)
 
-#Ready to play: User says yes or is now ready
-if answer == "yes" or answer == "ready":
-    choice = ["accept", "refuse"]
-    choice1text = "Great! Lets start!"
-    speak(choice1text)
+    # READY TO PLAY: User says nothing
+    if answer == []:
+        emptyText = "You either didnt say anything or you didn't talk loud enough. Could you repeat your answer"
+        print(emptyText)
+        speak(emptyText)
 
+        freq = 44100
+        duration = 3
+        recording = sd.rec(int(duration * freq),
+                           samplerate=freq, channels=1)
+        print("Recording has started")
+        sd.wait()
+        print("The recording has stopped")
+        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        r = sr.Recognizer()
+        inputaudio = sr.AudioFile('inputAudio.wav')
+        with inputaudio as source:
+            audio = r.record(source)
+        type(audio)
+        text = r.recognize_google(audio)
 
-else:
-    speak("Okei, the game quits now")
-    quit()
+        answer = text
+        print(answer)
+
+    if not answer == "yes" or answer == "ready" or answer == "no":
+        invalidAnswer = "You did not say one of the requested answers"
+        invalidAnswer2 = "Say Yes or No"
+        speak(invalidAnswer)
+        print(invalidAnswer)
+        speak(invalidAnswer2)
+        print(invalidAnswer2)
+
+        freq = 44100
+        duration = 3
+        recording = sd.rec(int(duration * freq),
+                           samplerate=freq, channels=1)
+        print("Recording has started")
+        sd.wait()
+        print("The recording has stopped")
+        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        r = sr.Recognizer()
+        inputaudio = sr.AudioFile('inputAudio.wav')
+        with inputaudio as source:
+            audio = r.record(source)
+        type(audio)
+        text = r.recognize_google(audio)
+
+        answer = text
+        print(answer)
+
+    #READY TO PLAY: User says yes or is now ready
+    if answer == "yes" or answer == "ready":
+        choice1text = "Great! Lets start!"
+        print(choice1text)
+        speak(choice1text)
+        break
