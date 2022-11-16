@@ -1,4 +1,4 @@
-#ALL IMPORTS
+#ALL IMPORTS------------------------------------------------------------------------------------------------------------
 import sys
 
 import sounddevice as sd
@@ -12,7 +12,7 @@ import speech_recognition as sr
 sr.__version__
 from modul_TTS import speak
 
-#INTRO PART ONE
+#INTRO PART ONE --------------------------------------------------------------------------------------------------------
 introText1 = "Welcome to our game!"
 introText2 = "In this game you will be playing as Jack, a poor farmers boy living with his mother."
 introText3 = "As you play as Jack, you will encounter challenges that you have to take smart choices"
@@ -30,7 +30,7 @@ speak(introText1)
 speak(introText5)
 
 
-#CODE FOR RECORDING TO STRING NAME
+#CODE FOR RECORDING NAME ------------------------------------------------------------------------------------------------
 freq = 44100
 duration = 3
 recording = sd.rec(int(duration * freq),
@@ -67,20 +67,23 @@ while True:
             with inputaudio as source:
                 audio = r.record(source)
             type(audio)
+            #FALSE ON THIS, OTHERWISE THE NEXT PART WILL FAIL
             text = r.recognize_google(audio, language='en-IN', show_all=False)
 
             name = text
 
-    # INTRO CONTINUE
+    #NAME SAID, INTRO CONTINUES
     if not name == []:
+        #ADD + FALSE ON THIS, OTHERWISE THE NEXT PART WILL FAIL
         text = r.recognize_google(audio, language='en-IN', show_all=False)
         name = text
 
-        introText6 = "Hi, " + name + "! Are you ready to play?"
+        introText6 = "Hi, " + name + "! Are you ready to play? Say yes or no"
         print(introText6)
         speak(introText6)
         break
 
+#RECODRING FOR ARE YOU READY
 freq = 44100
 duration = 3
 recording = sd.rec(int(duration * freq),
@@ -96,11 +99,11 @@ with inputaudio as source:
 type(audio)
 text = r.recognize_google(audio, language='en-IN', show_all=True)
 
-#TURNS TEXT TO ANSWER STRING
+#TURNS TEXT TO ANSWER
 answer = text
 print(answer)
 
-#ARE USER READY TO PLAY
+#ARE USER READY TO PLAY?------------------------------------------------------------------------------------------------
 while True:
     # READY TO PLAY: User says no
     #Maybe add if user wants to quit
@@ -151,6 +154,7 @@ while True:
         answer = text
         print(answer)
 
+    #READY TO PLAY: User says something else
     if not answer == "yes" or answer == "ready" or answer == "no":
         invalidAnswer = "You did not say one of the requested answers"
         invalidAnswer2 = "Say Yes or No"
@@ -183,3 +187,6 @@ while True:
         print(choice1text)
         speak(choice1text)
         break
+
+#CHOICE 1: SELL COW OR GO TO MARKED------------------------------------------------------------------------------------------------
+ida=1
