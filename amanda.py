@@ -44,3 +44,20 @@ if __name__ == "__main__":
             exit()
         elif next == 'home':
             print('As soon as Jack comes home, he talks with his mother')
+            
+            
+option2 == input('Do you want to throw the beans away or keep them?')
+#The second choice of the game
+if option2 == 'Throw':
+    print('Do you want to keep the beans or throw them out of the window?')
+    secondDecision = input('Jack is not happy with the beans so he throws them out, goes to bed and then when he looks out of the window he sees the beanstalk')
+    if secondDecision == 'Keep':
+        print('Jack wants to keep the beans so he puts them in the kitchen')
+    elif secondDecision == 'Throw':
+        print('Jack throws the beans out of the window')
+        secondDecision = input('Jack keeps the beans')
+        if secondDecision == 'Keep':
+            print('whatever Jack does after he decides to put the beans in the kitchen')
+        elif secondDecision == "Throw":
+            print()
+            exit()
