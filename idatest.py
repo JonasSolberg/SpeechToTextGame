@@ -19,16 +19,12 @@ introText2 = "In this game you will be playing as Jack, a poor farmer's boy livi
 introText3 = "As you play as Jack, you will encounter different challenges where you have to make smart choices."
 introText4 = "You will be given choices where you have to speak. Remember to only say the one of the two words we tell you to say."
 introText5 = "But before you can start, we would like to know who is playing our game! Could you tell us your name please?"
-print(introText1)
-print(introText2)
-print(introText3)
-print(introText4)
-print(introText5)
-speak(introText1)
-# speak(introText2)
-# speak(introText3)
-# speak(introText4)
-speak(introText5)
+
+introText = introText1 + introText2 + introText3 + introText4 + introText5
+
+print(introText)
+speak(introText)
+
 
 # CODE FOR RECORDING NAME ------------------------------------------------------------------------------------------------
 freq = 44100
@@ -208,7 +204,6 @@ while True:
 
     choice1Text = choice1Text1 + choice1Text2 + choice1Text3 + choice1Text4 + choice1Text5 + choice1Text6 + choice1Text7 + choice1Text8 + choice1Text9
     print(choice1Text)
-
     speak(choice1Text)
 
     # RECORD THE ANSWER
@@ -230,7 +225,7 @@ while True:
 
     # CHOICE 1: Yes
     if decision == "yes":
-        decisionYesText = "Jack accepts the offer he got for the cow and decides to sell it"
+        decisionYesText = "Magic beans?! What a bargain, Jack thought. He accepted the offer and ran home to tell his mother about the amazing offer."
         print(decisionYesText)
         speak(decisionYesText)
         soldCow = True
@@ -238,11 +233,26 @@ while True:
 
     # CHOICE 1: No
     elif decision == "no":
-        decisionNoText = "Jack does not accept the offer so he goes to the market"
+        decisionNoText1 = "Sorry, but I will not accept the offer’ Jack said. "
+        decisionNoText2 = "The butcher said it was okay and wished him good luck at the market. "
+        decisionNoText3 = "Jack continued his journey to the market. When he got there, he could see that there were a lot of people there. He would surely be able to sell the cow he thought. "
+        decisionNoText4 = "While walking around, Jack sees that there is a booth he has never seen before. He decides to go and take a look. The new booth sells jewels and sage. "
+        decisionNoText5 = "He must be a warlock, thought Jack. Jack thought that was very cool, since all the other booths only sell food, ugly clothing and tools. "
+        decisionNoText6 = "Hello there young boy, what is your name? Said the salesman. Jack introduced himself. "
+        decisionNoText7 = "Well hello Jack, what brings you here today?, the salesman said. I am here to sell my family's cow, Jack told the salesman. "
+        decisionNoText8 = "The salesman looked at Jack with enthusiasm. You know, I am in need of a cow, do you think I could buy her, the salesman said. "
+        decisionNoText9 = "Jack nodded his head and asked what he could offer. The salesman held out his hand and showed Jack a handful of beans. "
+        decisionNoText10 = "They are magic beans, worth quite a lot!, he said. Jack looked at the beans. Another man with magic beans? Maybe they are magical? "
+        decisionNoText11 = "Before Jack gave his answer, he asked: How can I know that they are magical? The salesman gave him a big smile before whispering: Because I'm a warlock. "
+
+        decisionNoText = decisionNoText1 + decisionNoText2 + decisionNoText3 + decisionNoText4 + decisionNoText5 + decisionNoText6 + decisionNoText7 + decisionNoText8 + decisionNoText9 + decisionNoText10 + decisionNoText11
+
         print(decisionNoText)
         speak(decisionNoText)
 
-        decisionNoText2 = "He gets a new offer for the cow, again with beans, does he accept?"
+        decisionNoText12 = "Will Jack accept his offer? Say yes or no"
+        print(decisionNoText12)
+        speak(decisionNoText12)
 
         # RECORD THE ANSWER
         freq = 44100
@@ -263,18 +273,25 @@ while True:
 
         # CHOICE 1.5: AT THE MARKED ------------------------------------------------------------------------------------------------
         if decision2 == "yes" or decision2 == "Yes":
-            decision2Text = "Jack accepts the offer he got for the cow and decides to sell it"
-            print(decision2Text)
-            speak(decision2Text)
-            # Add more to line up with the rest of the story
+            decision2TextYes = "But then they must be magic, thought Jack. He accepts the offer and starts the journey home to tell his mother about the magic beans."
+
+            print(decision2TextYes)
+            speak(decision2TextYes)
+
+            #Change to true so access the right choice 2
             soldCow = True
             break
 
         if decision2 == "no" or decision2 == "No":
-            decision2Text2 = "Jack returns home with the cow"
-            print(decision2Text2)
-            speak(decision2Text2)
-            # Add more to line up with the rest of the story
+            decision2TextNo1 = "Jack returns home with the cow. "
+            decision2TextNo2 = "The salesman said it was fine and went back to talking to other customers. When Jack turned around he saw that everyone else had gone home, so now he had no one to sell the cow to. "
+            decision2TextNo3 = "He decided to go home and try again the next day. "
+
+            decision2TextNo = decision2TextNo1 + decision2TextNo2 + decision2TextNo3
+
+            print(decision2TextNo)
+            speak(decision2TextNo)
+
             break
 
         if not decision2 == "yes" or decision2 == "no":
@@ -383,5 +400,5 @@ while True:
             speak(choice22Text1)
             break
 
-#WHEN THE STORIES CATCHES UP TO ONE ANOTHER
+#WHEN THE TWO STORIES CATCHES UP TO ONE ANOTHER
 choice2text = "Hello bitches"
