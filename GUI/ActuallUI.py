@@ -12,7 +12,7 @@ header1 = Label(root, text="Welcome to the the game")
 header1.grid(row=1,column=2)
 
 #logo for spiller
-my_img = ImageTk.PhotoImage(Image.open("bilde2.png"))
+my_img = ImageTk.PhotoImage(Image.open("../bilde2.png"))
 myLabel = Label(image=my_img)
 myLabel.grid(row=2, column=3)
 
