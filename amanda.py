@@ -3,7 +3,7 @@
 import sys
 import os
 import cmd
-#from playsound import playsound
+from playsound import playsound
 
 
 #Calling the main method
