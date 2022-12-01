@@ -189,6 +189,7 @@ while True:
         break
 
 #CHOICE 1: SELL COW OR GO TO MARKED------------------------------------------------------------------------------------------------
+soldCow = False
 while True:
     #CHOICE 1: Story
     choice1Text1 = "Jack is told to take the cow to the marked and sell it."
@@ -226,6 +227,7 @@ while True:
         decisionYesText = "Jack accepts the offer he got for the cow and decides to sell it"
         print(decisionYesText)
         speak(decisionYesText)
+        soldCow = True
         break
 
     # CHOICE 1: No
@@ -259,6 +261,7 @@ while True:
             print(decision2Text)
             speak(decision2Text)
             #Add more to line up with the rest of the story
+            soldCow = True
             break
 
         if decision2 == "no" or decision2 == "No":
@@ -357,4 +360,15 @@ while True:
         text = r.recognize_google(audio, language='en-IN', show_all=False)
         decision = text
 
-#CHOICE 2: WHAT TO DO WITH THE BEANS ------------------------------------------------------------------------------------------------
+#CHOICE 2: JACK IS HOME ------------------------------------------------------------------------------------------------
+while True:
+    # CHOICE 2.1: ONLY GOING TO HAPPEN IF JACK SOLD THE COW
+    if soldCow == True:
+        while True:
+            choice21Text1 = "Jack gets home. He shows his mother the beans. She is angry"
+            print(choice21Text1)
+
+    #CHOICE 2.2: JACK RETURNS WITH THE COW
+    if soldCow == False:
+        while True:
+            choise22Text1 = "Jack gets home and goes to bed. Next day, the cow is gone."
