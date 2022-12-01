@@ -362,7 +362,7 @@ while True:
 
     # CHOICE 1: Did not say anything
     elif decision == []:
-        emptyText = "You either didnt say anything or you didn't talk loud enough. Could you repeat your answer"
+        emptyText = "You either didn't say anything or you didn't talk loud enough. Could you repeat your answer"
         print(emptyText)
         speak(emptyText)
 
