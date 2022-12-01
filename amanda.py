@@ -38,9 +38,9 @@ if __name__ == "__main__":
         else:
             print('This is not a valid option, try again')
             exit()
-        next = input('story xxxx')
+        next = input('You saw Jack heading towards the market, do you think he should continue to go there or go home')
         if next == 'continue':
-            print('story xxxx')
+            print('As soon as Jack enters the market, he sees a butcher that might be interested in buying the cow')
             exit()
-        elif next == 'optionxxxx':
-            print('optionxxxx')
+        elif next == 'home':
+            print('As soon as Jack comes home, he talks with his mother')
