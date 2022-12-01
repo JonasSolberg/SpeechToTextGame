@@ -22,7 +22,7 @@ if __name__ == "__main__":
         exit()  # exit or quit
 
 #The first choice of the game
-    if option1 == 'yes':
+    if option1 == 'Yes':
         print('Jack gets an offer for the cow and goes home to talks to his mother')
         decision = input('Would you like to accept the offer or not?')
         if decision == 'Accept':
@@ -39,10 +39,10 @@ if __name__ == "__main__":
             print('This is not a valid option, try again')
             exit()
         next = input('You saw Jack heading towards the market, do you think he should continue to go there or go home')
-        if next == 'continue':
+        if next == 'Continue':
             print('As soon as Jack enters the market, he sees a butcher that might be interested in buying the cow')
             exit()
-        elif next == 'home':
+        elif next == 'Home':
             print('As soon as Jack comes home, he talks with his mother')
             
             
