@@ -15,10 +15,10 @@ from modul_TTS import speak
 
 # INTRO PART ONE --------------------------------------------------------------------------------------------------------
 introText1 = "Welcome to our game!"
-introText2 = "In this game you will be playing as Jack, a poor farmers boy living with his mother."
-introText3 = "As you play as Jack, you will encounter challenges that you have to take smart choices"
-introText4 = "You will be given choices where you have to speak. Remember to only say the one word we tell you to"
-introText5 = "We would like to know who is playing our game, could you tell us your name?"
+introText2 = "In this game you will be playing as Jack, a poor farmer's boy living with his mother."
+introText3 = "As you play as Jack, you will encounter different challenges where you have to make smart choices."
+introText4 = "You will be given choices where you have to speak. Remember to only say the one of the two words we tell you to say."
+introText5 = "But before you can start, we would like to know who is playing our game! Could you tell us your name please?"
 print(introText1)
 print(introText2)
 print(introText3)
@@ -189,21 +189,27 @@ while True:
         break
 
 # CHOICE 1: SELL COW OR GO TO MARKED------------------------------------------------------------------------------------------------
+
+#Boolean which determines what happens in CHOICE2
 soldCow = False
+
 while True:
     # CHOICE 1: Story
-    choice1Text1 = "Jack is told to take the cow to the marked and sell it."
-    choice1Text2 = "On the way there Jack meets the butcher. He wants the cow."
-    choice1Text3 = "He offerst magic beans. Will you accept his offer?"
-    choice1Text4 = "Say Yes or No"
-    print(choice1Text1)
-    print(choice1Text2)
-    print(choice1Text3)
-    print(choice1Text4)
-    speak(choice1Text1)
-    speak(choice1Text2)
-    speak(choice1Text3)
-    speak(choice1Text4)
+    choice1Text1 = "Once upon a time, there was a boy. His name was Jack. "
+    choice1Text2 = "Jack lived with his mother far out in the countryside. His mother would say that Jack was good-natured, but a bit lazy. "
+    choice1Text3 = "Jack and his mother were quite poor, and one day there was no money left to buy food. "
+    choice1Text4 = "Jack’s mother then told him to take the cow to the market and sell it, but only for a good price. "
+    choice1Text5 = "On the way there Jack meets the butcher. He asked where Jack was taking the cow. "
+    choice1Text6 = "I'm taking the cow to the market. My mother told me to sell it, Jack said. "
+    choice1Text7 = "What a nice cow. You know what? If you sell the cow to me, I will pay you with these five magic beans, the butcher said. "
+    choice1Text8 = "Jack looks at the beans. He kinda thinks they look like regular beans, but when he looks closely, he can see that they sparkle! "
+
+    choice1Text9 = "Will Jack accept this offer? Say Yes or No."
+
+    choice1Text = choice1Text1 + choice1Text2 + choice1Text3 + choice1Text4 + choice1Text5 + choice1Text6 + choice1Text7 + choice1Text8 + choice1Text9
+    print(choice1Text)
+
+    speak(choice1Text)
 
     # RECORD THE ANSWER
     freq = 44100
