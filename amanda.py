@@ -94,7 +94,7 @@ if option4 == 'Mother':
             
 option5 = input('Jack notices an old lady when he got to the top of the castle, should he ignore her or talk to her?')
 #The fifth choice of the game
-if option == 'Talk':
+if option5 == 'Talk':
     print('Jack decides to talk to her and the old lady tells Jack about his father and the giants')
     fifthDecision = input('Jack talks to the old lady')
     if fifthDecision == 'Ignore':
