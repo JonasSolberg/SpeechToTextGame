@@ -1,4 +1,4 @@
-#ALL IMPORTS------------------------------------------------------------------------------------------------------------
+# ALL IMPORTS------------------------------------------------------------------------------------------------------------
 import sys
 
 import sounddevice as sd
@@ -9,10 +9,11 @@ import gtts
 from playsound import playsound
 import os
 import speech_recognition as sr
+
 sr.__version__
 from modul_TTS import speak
 
-#INTRO PART ONE --------------------------------------------------------------------------------------------------------
+# INTRO PART ONE --------------------------------------------------------------------------------------------------------
 introText1 = "Welcome to our game!"
 introText2 = "In this game you will be playing as Jack, a poor farmers boy living with his mother."
 introText3 = "As you play as Jack, you will encounter challenges that you have to take smart choices"
@@ -29,12 +30,11 @@ speak(introText1)
 # speak(introText4)
 speak(introText5)
 
-
-#CODE FOR RECORDING NAME ------------------------------------------------------------------------------------------------
+# CODE FOR RECORDING NAME ------------------------------------------------------------------------------------------------
 freq = 44100
 duration = 3
 recording = sd.rec(int(duration * freq),
-                           samplerate=freq, channels=1)
+                   samplerate=freq, channels=1)
 print("Recording has started")
 sd.wait()
 print("The recording has stopped")
@@ -42,39 +42,39 @@ wv.write("inputAudio.wav", recording, freq, sampwidth=2)
 r = sr.Recognizer()
 inputaudio = sr.AudioFile('inputAudio.wav')
 with inputaudio as source:
-            audio = r.record(source)
+    audio = r.record(source)
 type(audio)
 text = r.recognize_google(audio, language='en-IN', show_all=True)
 name = text
 
-#IF USER DOES NOT SAY ANYTHING
+# IF USER DOES NOT SAY ANYTHING
 while True:
     if name == []:
-            repeatName = "You either didnt say anything or you didn't talk loud enough. Could you please repeat your name"
-            print(repeatName)
-            speak(repeatName)
+        repeatName = "You either didnt say anything or you didn't talk loud enough. Could you please repeat your name"
+        print(repeatName)
+        speak(repeatName)
 
-            freq = 44100
-            duration = 3
-            recording = sd.rec(int(duration * freq),
-                               samplerate=freq, channels=1)
-            print("Recording has started")
-            sd.wait()
-            print("The recording has stopped")
-            wv.write("inputAudio.wav", recording, freq, sampwidth=2)
-            r = sr.Recognizer()
-            inputaudio = sr.AudioFile('inputAudio.wav')
-            with inputaudio as source:
-                audio = r.record(source)
-            type(audio)
-            #FALSE ON THIS, OTHERWISE THE NEXT PART WILL FAIL
-            text = r.recognize_google(audio, language='en-IN', show_all=False)
+        freq = 44100
+        duration = 3
+        recording = sd.rec(int(duration * freq),
+                           samplerate=freq, channels=1)
+        print("Recording has started")
+        sd.wait()
+        print("The recording has stopped")
+        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        r = sr.Recognizer()
+        inputaudio = sr.AudioFile('inputAudio.wav')
+        with inputaudio as source:
+            audio = r.record(source)
+        type(audio)
+        # FALSE ON THIS, OTHERWISE THE NEXT PART WILL FAIL
+        text = r.recognize_google(audio, language='en-IN', show_all=False)
 
-            name = text
+        name = text
 
-    #NAME SAID, INTRO CONTINUES
+    # NAME SAID, INTRO CONTINUES
     if not name == []:
-        #ADD + FALSE ON THIS, OTHERWISE THE NEXT PART WILL FAIL
+        # ADD + FALSE ON THIS, OTHERWISE THE NEXT PART WILL FAIL
         text = r.recognize_google(audio, language='en-IN', show_all=False)
         name = text
 
@@ -83,11 +83,11 @@ while True:
         speak(introText6)
         break
 
-#RECODRING FOR ARE YOU READY
+# RECODRING FOR ARE YOU READY
 freq = 44100
 duration = 3
 recording = sd.rec(int(duration * freq),
-                           samplerate=freq, channels=1)
+                   samplerate=freq, channels=1)
 print("Recording has started")
 sd.wait()
 print("The recording has stopped")
@@ -95,27 +95,27 @@ wv.write("inputAudio.wav", recording, freq, sampwidth=2)
 r = sr.Recognizer()
 inputaudio = sr.AudioFile('inputAudio.wav')
 with inputaudio as source:
-            audio = r.record(source)
+    audio = r.record(source)
 type(audio)
 text = r.recognize_google(audio, language='en-IN', show_all=False)
 
-#TURNS TEXT TO ANSWER
+# TURNS TEXT TO ANSWER
 answer = text
 print(answer)
 
-#ARE USER READY TO PLAY?------------------------------------------------------------------------------------------------
+# ARE USER READY TO PLAY?------------------------------------------------------------------------------------------------
 while True:
     # READY TO PLAY: User says no
-    #Maybe add if user wants to quit
+    # Maybe add if user wants to quit
     if answer == "no" or answer == "No":
         noText = "Okei, say ready whenever you are ready."
         speak(noText)
 
-        #RECORDING FOR READY IF ANSWER WAS NO
+        # RECORDING FOR READY IF ANSWER WAS NO
         freq = 44100
         duration = 3
         recording = sd.rec(int(duration * freq),
-                               samplerate=freq, channels=1)
+                           samplerate=freq, channels=1)
         print("Recording has started")
         sd.wait()
         print("The recording has stopped")
@@ -123,7 +123,7 @@ while True:
         r = sr.Recognizer()
         inputaudio = sr.AudioFile('inputAudio.wav')
         with inputaudio as source:
-                audio = r.record(source)
+            audio = r.record(source)
         type(audio)
         text = r.recognize_google(audio)
 
@@ -154,7 +154,7 @@ while True:
         answer = text
         print(answer)
 
-    #READY TO PLAY: User says something else
+    # READY TO PLAY: User says something else
     if not answer == "yes" or answer == "ready" or answer == "no":
         invalidAnswer = "You did not say one of the requested answers"
         invalidAnswer2 = "Say Yes or No"
@@ -181,17 +181,17 @@ while True:
         answer = text
         print(answer)
 
-    #READY TO PLAY: User says yes or is now ready
+    # READY TO PLAY: User says yes or is now ready
     if answer == "yes" or answer == "Yes" or answer == "ready":
         choice1text = "Great! Lets start!"
         print(choice1text)
         speak(choice1text)
         break
 
-#CHOICE 1: SELL COW OR GO TO MARKED------------------------------------------------------------------------------------------------
+# CHOICE 1: SELL COW OR GO TO MARKED------------------------------------------------------------------------------------------------
 soldCow = False
 while True:
-    #CHOICE 1: Story
+    # CHOICE 1: Story
     choice1Text1 = "Jack is told to take the cow to the marked and sell it."
     choice1Text2 = "On the way there Jack meets the butcher. He wants the cow."
     choice1Text3 = "He offerst magic beans. Will you accept his offer?"
@@ -205,7 +205,7 @@ while True:
     speak(choice1Text3)
     speak(choice1Text4)
 
-    #RECORD THE ANSWER
+    # RECORD THE ANSWER
     freq = 44100
     duration = 3
     recording = sd.rec(int(duration * freq),
@@ -255,12 +255,12 @@ while True:
         text = r.recognize_google(audio, language='en-IN', show_all=False)
         decision2 = text
 
-        #CHOICE 1.5: AT THE MARKED ------------------------------------------------------------------------------------------------
+        # CHOICE 1.5: AT THE MARKED ------------------------------------------------------------------------------------------------
         if decision2 == "yes" or decision2 == "Yes":
             decision2Text = "Jack accepts the offer he got for the cow and decides to sell it"
             print(decision2Text)
             speak(decision2Text)
-            #Add more to line up with the rest of the story
+            # Add more to line up with the rest of the story
             soldCow = True
             break
 
@@ -314,14 +314,13 @@ while True:
             text = r.recognize_google(audio, language='en-IN', show_all=False)
             decision2 = r.recognize_google(audio)
 
-
     # CHOICE 1: Did not say a valid answer
     if not decision == "yes" or decision == "no":
         invalidDecision = "Your decision was not one of the requested ones, say your decision again"
         speak(invalidDecision)
         print(invalidDecision)
 
-        #NEW RECORDING
+        # NEW RECORDING
         freq = 44100
         duration = 3
         recording = sd.rec(int(duration * freq),
@@ -338,7 +337,7 @@ while True:
         text = r.recognize_google(audio, language='en-IN', show_all=False)
         decision = text
 
-    #CHOICE 1: Did not say anything
+    # CHOICE 1: Did not say anything
     if decision == []:
         emptyText = "You either didnt say anything or you didn't talk loud enough. Could you repeat your answer"
         print(emptyText)
@@ -360,15 +359,23 @@ while True:
         text = r.recognize_google(audio, language='en-IN', show_all=False)
         decision = text
 
-#CHOICE 2: JACK IS HOME ------------------------------------------------------------------------------------------------
+# CHOICE 2: JACK IS HOME ------------------------------------------------------------------------------------------------
 while True:
     # CHOICE 2.1: ONLY GOING TO HAPPEN IF JACK SOLD THE COW
     if soldCow == True:
         while True:
             choice21Text1 = "Jack gets home. He shows his mother the beans. She is angry"
             print(choice21Text1)
+            speak(choice21Text1)
+            break
 
-    #CHOICE 2.2: JACK RETURNS WITH THE COW
+    # CHOICE 2.2: JACK RETURNS WITH THE COW
     if soldCow == False:
         while True:
-            choice22Text1 = "Jack gets home and goes to bed. Next day, the cow is gone."
+            choice22Text1 = "Jack gets home and goes to bed. The next day, the cow is gone."
+            print(choice22Text1)
+            speak(choice22Text1)
+            break
+
+#WHEN THE STORIES CATCHES UP TO ONE ANOTHER
+choice2text = "Hello bitches"
