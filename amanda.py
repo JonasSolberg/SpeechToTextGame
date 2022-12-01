@@ -61,3 +61,19 @@ if option2 == 'Throw':
         elif secondDecision == "Throw":
             print()
             exit()
+           
+        
+option3 = input('Do you want to accept the offer from the butcher or do you want to find another to get a better offer?')        
+#The third choice of the game
+if option3 == 'Accept again':
+    print('Jack accepts the offer and goes home')
+    thirdDecision = input('Jack tells his mother about the beans and they have an argument about the deal')
+    if thirdDecision == 'Not convinced':
+        print('Jack is not convinced about the offer but he goes home and tells his mom that no one was interested in buying the cow, but the next day the cow was gone')
+    elif thirdDecision == 'Accept again':
+        print('Jack accepts the offer and sells the cow')
+        thirdDecision = input('Jack sells the cow')
+        if thirdDecision == 'Sell':
+            print('Jack sells the cow')
+            exit()
+            
