@@ -105,3 +105,18 @@ if option5 == 'Talk':
         if fifthDecision == 'Ignore':
             print('Jack decides to ignore the old lady and goes to the castle instead')
             exit()
+
+            
+option6 = input('Should Jack sneak through the window or should he knock on the door?')
+#The sixth choice of the game
+if option6 == 'Door':
+    print('Jack decides to knock on the door and he is greeted by the giant wife')
+    sixthDecision = input('Jack knocks on the door')
+    if sixthDecision == 'Sneak':
+        print('Jack sneaks in through the window, the wife notices him and throws him out of the castle')
+    elif sixthDecision == 'Door':
+        print('Jack decides to knock on the door and he is greeted by the giant wife')
+        sixthDecision = input('Jack knocks on the door, where he asks the wife for dinner and when the giant comes home, the wife tells Jack to hide')
+        if sixthDecision == 'Sneak':
+            print('Jack changes clothes and re-enters the castle')
+            exit()
