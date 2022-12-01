@@ -69,7 +69,7 @@ while True:
         name = text
 
     # NAME SAID, INTRO CONTINUES
-    if not name == []:
+    elif not name == []:
         # ADD + FALSE ON THIS, OTHERWISE THE NEXT PART WILL FAIL
         text = r.recognize_google(audio, language='en-IN', show_all=False)
         name = text
@@ -127,7 +127,7 @@ while True:
         print(answer)
 
     # READY TO PLAY: User says nothing
-    if answer == []:
+    elif answer == []:
         emptyText = "You either didnt say anything or you didn't talk loud enough. Could you repeat your answer"
         print(emptyText)
         speak(emptyText)
@@ -151,7 +151,7 @@ while True:
         print(answer)
 
     # READY TO PLAY: User says something else
-    if not answer == "yes" or answer == "ready" or answer == "no":
+    elif not answer == "yes" or answer == "ready" or answer == "no":
         invalidAnswer = "You did not say one of the requested answers"
         invalidAnswer2 = "Say Yes or No"
         speak(invalidAnswer)
@@ -178,7 +178,7 @@ while True:
         print(answer)
 
     # READY TO PLAY: User says yes or is now ready
-    if answer == "yes" or answer == "Yes" or answer == "ready":
+    elif answer == "yes" or answer == "Yes" or answer == "ready":
         choice1text = "Great! Lets start!"
         print(choice1text)
         speak(choice1text)
@@ -282,7 +282,7 @@ while True:
             soldCow = True
             break
 
-        if decision2 == "no" or decision2 == "No":
+        elif decision2 == "no" or decision2 == "No":
             decision2TextNo1 = "Jack returns home with the cow. "
             decision2TextNo2 = "The salesman said it was fine and went back to talking to other customers. When Jack turned around he saw that everyone else had gone home, so now he had no one to sell the cow to. "
             decision2TextNo3 = "He decided to go home and try again the next day. "
@@ -294,7 +294,7 @@ while True:
 
             break
 
-        if not decision2 == "yes" or decision2 == "no":
+        elif not decision2 == "yes" or decision2 == "no":
             invalidDecision = "Your decision was not one of the requested ones, say your decision again"
             speak(invalidDecision)
             print(invalidDecision)
@@ -316,7 +316,7 @@ while True:
             text = r.recognize_google(audio, language='en-IN', show_all=False)
             decision2 = text
 
-        if decision2 == []:
+        elif decision2 == []:
             emptyText = "You either didnt say anything or you didn't talk loud enough. Could you repeat your answer"
             print(emptyText)
             speak(emptyText)
@@ -338,7 +338,7 @@ while True:
             decision2 = r.recognize_google(audio)
 
     # CHOICE 1: Did not say a valid answer
-    if not decision == "yes" or decision == "no":
+    elif not decision == "yes" or decision == "no":
         invalidDecision = "Your decision was not one of the requested ones, say your decision again"
         speak(invalidDecision)
         print(invalidDecision)
@@ -361,7 +361,7 @@ while True:
         decision = text
 
     # CHOICE 1: Did not say anything
-    if decision == []:
+    elif decision == []:
         emptyText = "You either didnt say anything or you didn't talk loud enough. Could you repeat your answer"
         print(emptyText)
         speak(emptyText)
@@ -393,12 +393,12 @@ while True:
             break
 
     # CHOICE 2.2: JACK RETURNS WITH THE COW
-    if soldCow == False:
+    elif soldCow == False:
         while True:
             choice22Text1 = "Jack gets home and goes to bed. The next day, the cow is gone."
             print(choice22Text1)
             speak(choice22Text1)
             break
 
-#WHEN THE TWO STORIES CATCHES UP TO ONE ANOTHER
+#WHEN THE TWO STORIES  CATCHES UP TO ONE ANOTHER
 choice2text = "Hello bitches"
