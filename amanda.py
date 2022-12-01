@@ -90,3 +90,18 @@ if option4 == 'Mother':
         if fourthDecision == 'Leaves':
             print('Jack leaves the house without telling his mother')
             exit()
+            
+            
+option5 = input('Jack notices an old lady when he got to the top of the castle, should he ignore her or talk to her?')
+#Option 5
+if option == 'Talk':
+    print('Jack decides to talk to her and the old lady tells Jack about his father and the giants')
+    fifthDecision = input('Jack talks to the old lady')
+    if fifthDecision == 'Ignore':
+        print('Jack decides to ignore the old lady and goes to the castle instead')
+    elif fifthDecision == 'Talk':
+        print('Jack talks to the old lady')
+        fifthDecision = input('Jack has a talk with the old lady')
+        if fifthDecision == 'Ignore':
+            print('Jack decides to ignore the old lady and goes to the castle instead')
+            exit()
