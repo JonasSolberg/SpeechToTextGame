@@ -69,7 +69,7 @@ if option3 == 'Accept again':
     print('Jack accepts the offer and goes home')
     thirdDecision = input('Jack tells his mother about the beans and they have an argument about the deal')
     if thirdDecision == 'Not convinced':
-        print('Jack is not convinced about the offer but he goes home and tells his mom that no one was interested in buying the cow, but the next day the cow was gone')
+        print('Jack is not convinced about the offer so he goes home and tells his mom that no one was interested in buying the cow, and the next day the cow was gone')
     elif thirdDecision == 'Accept again':
         print('Jack accepts the offer and sells the cow')
         thirdDecision = input('Jack sells the cow')
@@ -77,3 +77,16 @@ if option3 == 'Accept again':
             print('Jack sells the cow')
             exit()
             
+option4 = input('Do you want to tell the mother or do you want to keep it a secret for now?')            
+#The fourth choice of the game
+if option4 == 'Mother':
+    print('After Jack wakes up in the morning, he goes to have a talk with his mother')
+    fourthDecision = input('Jack talks to his mother')
+    if fourthDecision == 'Not telling mother':
+        print('Jack leaves without telling his mother, he climbs up to the top of the beanstalk where he sees a castle and an old lady')
+    elif fourthDecision == 'Mother':
+        print('Jack talks to his mother')
+        fourthDecision = input('Jack has a discussion with his mother')
+        if fourthDecision == 'Leaves':
+            print('Jack leaves the house without telling his mother')
+            exit()
