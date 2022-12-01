@@ -371,4 +371,4 @@ while True:
     #CHOICE 2.2: JACK RETURNS WITH THE COW
     if soldCow == False:
         while True:
-            choise22Text1 = "Jack gets home and goes to bed. Next day, the cow is gone."
+            choice22Text1 = "Jack gets home and goes to bed. Next day, the cow is gone."

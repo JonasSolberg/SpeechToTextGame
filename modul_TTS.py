@@ -53,5 +53,3 @@ def rec():
     print(tekst)
   finally: print("Error in Module")
 
-  name = tekst
-
