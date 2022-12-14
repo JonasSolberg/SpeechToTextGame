@@ -496,10 +496,30 @@ while True:
 
     # CHOICE 2.2: JACK RETURNS WITH THE COW
     elif soldCow == False:
-            choice22Text1 = "Jack gets home and goes to bed. The next day, the cow is gone."
-            print(choice22Text1)
-            speak(choice22Text1)
+            choice22Text1 = "When Jack gets home, his mother sees him and the cow through the window. Why do you still have the cow, she asked. "
+            choice22Text2 = "There was no one at the market who offered me a good deal for her, he said. Well, then you try again tomorrow, his mother said. "
+            choice22Text3 = "Jack went to bed that night, thinking what would have happened if he accepted the beans. "
+
+            #THE COW IS GONE
+            choice22Text4 = "The next morning Jack wakes up to his mother yelling. NO, Those damn thieves, she shouts. Jack goes outside and sees that the cow is gone and that the gate is broken. "
+            choice22Text5 = "Someone stole our cow Jack, his mother said. Jack looks down at the ground. Close to the gate, there is a ripped piece of clothing. "
+            choice22Text6 = "The thief must have gotten his pocket stuck in the gate and ruined it. When he gets closer, he can see a small bag with something in it. "
+            choice22Text7 = "When he opens it, he sees that there are beans inside of it. Mother, he said, The thief must have lost this when he stole the cow. "
+            choice22Text8 = " Beans will not make this better, she yelled. She took the bag and threw it away. Jack could see the beans flying around in the air, landing in the garden. "
+            choice22Text9 = "Jack spent the rest of the day looking for berries in the forest so that he and his mother would have something to eat that day. "
+            choice22Text10 = "It helped with hunger, but he knew that he could not survive on berries for too long. He went to sleep worried about his mother as well. "
+
+            choice22Text = choice22Text1 + choice22Text2 + choice22Text3 + choice22Text4 + choice22Text5 + choice22Text6 + choice22Text7 + choice22Text8 + choice22Text9 + choice22Text10
+
+            print(choice22Text)
+            speak(choice22Text)
             break
 
-#WHEN THE TWO STORIES  CATCHES UP TO ONE ANOTHER
-choice2text = ""
+#WHEN THE TWO STORIES CATCHES UP TO ONE ANOTHER AFTER JACK GETS HOME AND HAS SLEPT
+#CHOICE 3: CLIMB THE BEANSTALK -------------------------------------------------------------------------------------------------
+choice3text1 = ""
+
+choice3text = choice3text1
+
+print(choice3text)
+speak(choice3text)
