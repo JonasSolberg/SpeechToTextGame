@@ -386,19 +386,120 @@ while True:
 while True:
     # CHOICE 2.1: ONLY GOING TO HAPPEN IF JACK SOLD THE COW
     if soldCow == True:
-        while True:
-            choice21Text1 = "Jack gets home. He shows his mother the beans. She is angry"
-            print(choice21Text1)
-            speak(choice21Text1)
+        choice21Text1 = "When Jack got home, he ran to his mother to tell her about the magic bean. "
+        choice21Text2 = "Mother! He yelled. She walked up to him and asked why he was yelling. "
+        choice21Text3 = "I sold the cow mother! Look! He said, showing her the bean. "
+        choice21Text4 = "Beans, she said with a confused look. Where is the money, she asked. "
+        choice21Text5 = "I sold the cow for these beans mother, they are magical! He said with enthusiasm. "
+        choice21Text6 = "You stupid, stupid boy! We needed the money, she said. "
+        choice21Text7 = "Jack got angry by hearing this. But mother, they are magical! Just look at them! he said. "
+        choice21Text8 = "I do not want to hear it, get them away from me, the mother said. "
+        choice21Text9 = "Jack did not like seeing his mother so angry. What should Jack do? Give the beans to the mother or Leave them on the kitchen counter"
+        choice21Text10 = "Say Mother to give them to the mother og say Not to put them on the counter"
+
+        choice21Text = choice21Text1 + choice21Text2 + choice21Text3 + choice21Text4 + choice21Text5 + choice21Text6 + choice21Text7 + choice21Text8 + choice21Text9 + choice21Text10
+
+        print(choice21Text)
+        speak(choice21Text)
+
+        #RECORD THE USERS CHOICE
+        freq = 44100
+        duration = 3
+        recording = sd.rec(int(duration * freq),
+                           samplerate=freq, channels=1)
+        print("Recording has started")
+        sd.wait()
+        print("The recording has stopped")
+        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        r = sr.Recognizer()
+        inputaudio = sr.AudioFile('inputAudio.wav')
+        with inputaudio as source:
+            audio = r.record(source)
+        type(audio)
+        text = r.recognize_google(audio, language='en-IN', show_all=False)
+        answer = text
+
+        # IF JACK GAVE THE BEANS TO THE MOTHER
+        if answer == "mother":
+            choice21Text11 = "Jack gathers all the beans in one hand and stretches out his hand towards his mother. "
+            choice21Text12 = "I do not want to look at those beans anymore! She says. She takes the beans from Jack and throws them out of the window. "
+            choice21Text13 = "Jack watches in disbelief. He wants to cry, but not in front of his mother. He runs to his bedroom and stays there the rest of the night. "
+            choice21Text14 = "They did not have money for food anyway, so he does not have to go out to get dinner. "
+            choice21Text15 = "He falls asleep, thinking about the magic beans. Maybe they were not magic after all…"
+
+            choice21Text = choice21Text11 + choice21Text12 + choice21Text13 + choice21Text14 + choice21Text15
+
+            print(choice21Text)
+            speak(choice21Text)
+
             break
+
+        # IF JACK LEFT THE BEANS ON THE TABLE
+        elif answer == "not":
+            choice21Text21 = "Jack does not want to argue with his mother anymore. He puts the beans on the dinner table and starts walking towards his room. "
+            choice21Text22 = "No! His mother yells. She continues: Since you bought the beans, then you can go out and plant the beans. Maybe we will have beans to eat in a few days. "
+            choice21Text23 = "Jack takes the beans and goes out in the garden. After 20 minutes of work, the gardening is done. "
+            choice21Text24 = "Jack goes inside, dirty and hungry, but they do not have anything to eat, so he has to go to bed hungry. "
+            choice21Text25 = "He falls asleep, thinking about the magic beans. Maybe they were not magic after all… "
+
+            choice21Text = choice21Text21 + choice21Text22 + choice21Text23 + choice21Text24 + choice21Text25
+
+            print(choice21Text)
+            speak(choice21Text)
+
+            break
+
+        # CHOICE 1: Did not say a valid answer
+        elif not answer == "mother" or answer == "not":
+            decisionAnswer = "Your decision was not one of the requested ones, say your decision again"
+            speak(decisionAnswer)
+            print(decisionAnswer)
+
+            # NEW RECORDING
+            freq = 44100
+            duration = 3
+            recording = sd.rec(int(duration * freq),
+                               samplerate=freq, channels=1)
+            print("Recording has started")
+            sd.wait()
+            print("The recording has stopped")
+            wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+            r = sr.Recognizer()
+            inputaudio = sr.AudioFile('inputAudio.wav')
+            with inputaudio as source:
+                audio = r.record(source)
+            type(audio)
+            text = r.recognize_google(audio, language='en-IN', show_all=False)
+            answer = text
+
+        # IF THE USER DIDNT SAY ANYTHING OR TALKED LOUD ENOUGH
+        elif answer == []:
+            emptyText = "You either didn't say anything or you didn't talk loud enough. Could you repeat your answer. Say Mother or say Not"
+            print(emptyText)
+            speak(emptyText)
+
+            freq = 44100
+            duration = 3
+            recording = sd.rec(int(duration * freq),
+                               samplerate=freq, channels=1)
+            print("Recording has started")
+            sd.wait()
+            print("The recording has stopped")
+            wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+            r = sr.Recognizer()
+            inputaudio = sr.AudioFile('inputAudio.wav')
+            with inputaudio as source:
+                audio = r.record(source)
+            type(audio)
+            text = r.recognize_google(audio, language='en-IN', show_all=False)
+            answer = text
 
     # CHOICE 2.2: JACK RETURNS WITH THE COW
     elif soldCow == False:
-        while True:
             choice22Text1 = "Jack gets home and goes to bed. The next day, the cow is gone."
             print(choice22Text1)
             speak(choice22Text1)
             break
 
 #WHEN THE TWO STORIES  CATCHES UP TO ONE ANOTHER
-choice2text = "Hello bitches"
+choice2text = ""
