@@ -12,7 +12,7 @@ print("Welcome to the game. Please have your sound turned on")
 storyPart1 = "This is a test of a story. please say left or right"
 tts = gtts.gTTS(storyPart1, lang="en")
 tts.save("storyPart1.mp3")
-playsound("storyPart1.mp3")
+playsound("../storyPart1.mp3")
 
 
 
@@ -41,9 +41,9 @@ print("The recording has stopped")
 
 try:
     # Convert the NumPy array to audio file
-    wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+    wv.write("../inputAudio.wav", recording, freq, sampwidth=2)
     r = sr.Recognizer()
-    inputaudio = sr.AudioFile('inputAudio.wav')
+    inputaudio = sr.AudioFile('../inputAudio.wav')
     with inputaudio as source:
         audio = r.record(source)
     type(audio)
@@ -72,7 +72,7 @@ if answer1 == 1:
     storyPart2 ="You said left. Please say go home"
     tts = gtts.gTTS(storyPart2, lang="en")
     tts.save("storyPart1.mp3")
-    playsound("storyPart1.mp3")
+    playsound("../storyPart1.mp3")
 
     freq = 44100
     # Recording duration
@@ -86,9 +86,9 @@ if answer1 == 1:
     sd.wait()
     try:
         # Convert the NumPy array to audio file
-        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        wv.write("../inputAudio.wav", recording, freq, sampwidth=2)
         r = sr.Recognizer()
-        inputaudio = sr.AudioFile('inputAudio.wav')
+        inputaudio = sr.AudioFile('../inputAudio.wav')
         with inputaudio as source:
           audio = r.record(source)
         type(audio)
@@ -102,7 +102,7 @@ if answer1 == 2:
     storyPart2 = "You said right. Please say go home"
     tts = gtts.gTTS(storyPart2, lang="en")
     tts.save("storyPart1.mp3")
-    playsound("storyPart1.mp3")
+    playsound("../storyPart1.mp3")
 
     freq = 44100
     # Recording duration
@@ -116,9 +116,9 @@ if answer1 == 2:
     sd.wait()
     try:
         # Convert the NumPy array to audio file
-        wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+        wv.write("../inputAudio.wav", recording, freq, sampwidth=2)
         r = sr.Recognizer()
-        inputaudio = sr.AudioFile('inputAudio.wav')
+        inputaudio = sr.AudioFile('../inputAudio.wav')
         with inputaudio as source:
           audio = r.record(source)
         type(audio)

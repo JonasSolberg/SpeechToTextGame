@@ -16,9 +16,9 @@ def rec(t):
     print("Recording has started")
     sd.wait()
     print("The recording has stopped")
-    wv.write("inputAudio.wav", recording, freq, sampwidth=2)
+    wv.write("../inputAudio.wav", recording, freq, sampwidth=2)
     r = sr.Recognizer()
-    inputaudio = sr.AudioFile('inputAudio.wav')
+    inputaudio = sr.AudioFile('../inputAudio.wav')
     with inputaudio as source:
                 audio = r.record(source)
     type(audio)

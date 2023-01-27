@@ -16,7 +16,7 @@ def open():
     global my_img
     top = Toplevel()
     label = Label(top, text="Hello World").pack()
-    my_img = ImageTk.PhotoImage(Image.open("../bilde2.png"))
+    my_img = ImageTk.PhotoImage(Image.open("bilde2.png"))
     label1 = Label(top, image=my_img).pack()
     btn2 = Button (top, text="close window", command=top.destroy).pack()
 
