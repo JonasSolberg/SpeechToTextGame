@@ -40,7 +40,7 @@ type(audio)
 text = r.recognize_google(audio, language='en-IN', show_all=True)
 name = text
 
-# IF USER DOES NOT SAY ANYTHING
+# IF USER DOES NOT SAY ANYTHING -- Using local audio file
 while True:
     if name == []:
         repeatName = "You either didnt say anything or you didn't talk loud enough. Could you please repeat your name"
@@ -188,7 +188,7 @@ while True:
 soldCow = False
 
 while True:
-    # CHOICE 1: Story
+    # CHOICE 1: Story Using local audio file
     choice1Text1 = "Once upon a time, there was a boy. His name was Jack. "
     choice1Text2 = "Jack lived with his mother far out in the countryside. His mother would say that Jack was good-natured, but a bit lazy. "
     choice1Text3 = "Jack and his mother were quite poor, and one day there was no money left to buy food. "
